@@ -7,5 +7,20 @@ class CustomerApi(ListAPIView):
     serializer_class = CustomerSerializer
 
 class VehicleApi(ListAPIView):
-    queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
+    def get_queryset(self):
+        status = self.request.GET.get('status')
+        customer_id = self.request.GET.get('customer_id')
+        if status and customer_id:
+            return Vehicle.objects.filter(status=status, customer_id=customer_id)
+        elif status:
+            return Vehicle.objects.filter(status=status)
+        elif customer_id:
+            return Vehicle.objects.filter(customer_id=customer_id)
+        else:
+            return Vehicle.objects.all()
+
+
+
+
+
