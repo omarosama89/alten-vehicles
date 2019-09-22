@@ -1,7 +1,9 @@
-from django.conf.urls import url
-from .api import CustomerApi, VehicleApi
+# from django.conf.urls import url
+from .api import CustomerViewSet, VehicleViewSet
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    url(r'^customers$', CustomerApi.as_view()),
-    url(r'^vehicles$', VehicleApi.as_view())
-]
+router = DefaultRouter()
+router.register(r'customers', CustomerViewSet)
+router.register(r'vehicles', VehicleViewSet)
+
+urlpatterns = router.urls

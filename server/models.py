@@ -9,7 +9,6 @@ from django.utils.encoding import python_2_unicode_compatible
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    remote_id = models.IntegerField()
 
 
 class Vehicle(models.Model):
