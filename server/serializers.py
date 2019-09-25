@@ -9,4 +9,4 @@ class CustomerSerializer(serializers.ModelSerializer):
 class VehicleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vehicle
-        fields = ('id', 'status', 'vehicle_id', 'reg_num', 'customer_id')
+        fields = ('id', 'status', 'vehicle_id', 'reg_num', 'customer_id', 'customer_name')

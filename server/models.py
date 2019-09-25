@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from .realtim_api import RealtimApi
+
 
 
 @python_2_unicode_compatible
@@ -19,3 +23,9 @@ class Vehicle(models.Model):
     vehicle_id = models.CharField(max_length=20)
     reg_num = models.CharField(max_length=20)
     customer = models.ForeignKey(Customer, related_name="vehicles", on_delete=models.PROTECT)
+    def customer_name(self):
+        return self.customer.first_name + ' ' + self.customer.last_name
+
+@receiver(pre_save, sender=Vehicle)
+def callback(sender, instance, **kwargs):
+    RealtimApi.notify('event', instance)
