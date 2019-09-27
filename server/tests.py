@@ -63,11 +63,11 @@ class VehicleModelTestCase(TestCase):
         target.reg_num = ''
         self.assertFalse(target.reg_num)
 
-class DatabaseLoaded(TransactionTestCase):
-    fixtures = ['server/fixtures/unit-test.json']
-
-    def test_fixtures_load(self):
-        self.assertTrue(Customer.objects.count() > 0)
+# class DatabaseLoaded(TransactionTestCase):
+#     fixtures = ['server/fixtures/unit-test.json']
+#
+#     def test_fixtures_load(self):
+#         self.assertTrue(Customer.objects.count() > 0)
 
 # class CustomerModelTransactionTestCase(TransactionTestCase):
 #     # fixtures = ['server/fixtures/unit-test.json']
