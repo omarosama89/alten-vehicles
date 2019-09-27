@@ -26,6 +26,6 @@ class Vehicle(models.Model):
     def customer_name(self):
         return self.customer.first_name + ' ' + self.customer.last_name
 
-# @receiver(pre_save, sender=Vehicle)
-# def callback(sender, instance, **kwargs):
-#     RealtimApi.notify('event', instance)
+@receiver(pre_save, sender=Vehicle)
+def callback(sender, instance, **kwargs):
+    RealtimApi.notify('event', instance)
