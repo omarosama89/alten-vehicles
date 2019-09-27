@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from .realtim_api import RealtimApi
+from .realtime_api import RealtimeApi
 
 
 
@@ -28,4 +28,4 @@ class Vehicle(models.Model):
 
 @receiver(pre_save, sender=Vehicle)
 def callback(sender, instance, **kwargs):
-    RealtimApi.notify('event', instance)
+    RealtimeApi.notify('event', instance)

@@ -1,12 +1,12 @@
 import requests
 import json
-from urllib3.exceptions import NewConnectionError
+from requests.exceptions import ConnectionError
 # import pdb
 
 REMOTE_URL = 'http://localhost:3001/notify'
 
 
-class RealtimApi:
+class RealtimeApi:
     @staticmethod
     def notify(channel_name, vehicle):
         data = {
@@ -23,6 +23,6 @@ class RealtimApi:
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         try:
             requests.post(url=REMOTE_URL, data=json.dumps(data), headers=headers)
-        except(NewConnectionError) as e:
+        except ConnectionError:
             pass
         # pdb.set_trace()
