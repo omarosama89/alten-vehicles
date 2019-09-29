@@ -1,9 +1,10 @@
 import requests
 import json
 from requests.exceptions import ConnectionError
+import os
 # import pdb
 
-REMOTE_URL = 'http://localhost:3001/notify'
+REMOTE_URL = 'http://%s:3001/notify' % (os.environ.get('DOCKER_REALTIME_HOSTNAME') or 'localhost')
 
 
 class RealtimeApi:

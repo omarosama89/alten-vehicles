@@ -95,8 +95,9 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'vehicles',
             'USER': 'vehiclesuser',
-            'PASSWORD': '12345678',
-            'HOST': 'localhost',
+            'PASSWORD': '123',
+            # 'HOST': 'vehicles_db',         # docker
+            'HOST': os.environ.get('DOCKER_DB_HOSTNAME') or 'localhost',
             'PORT': '5432',
         }
     }
