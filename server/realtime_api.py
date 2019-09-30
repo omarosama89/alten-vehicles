@@ -1,11 +1,12 @@
 import requests
 import json
 from requests.exceptions import ConnectionError
-import os
+from django.conf import settings
 # import pdb
 
-REMOTE_URL = 'http://%s:3001/notify' % (os.environ.get('DOCKER_REALTIME_HOSTNAME') or 'localhost')
+ROOT_URL = settings.REALTIME_API_HOST
 
+REMOTE_URL = ROOT_URL + '/notify'
 
 class RealtimeApi:
     @staticmethod

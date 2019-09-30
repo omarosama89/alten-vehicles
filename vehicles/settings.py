@@ -137,6 +137,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+if 'RDS_DB_NAME' in os.environ:
+    REALTIME_API_HOST = 'https://alten-realtime.herokuapp.com'
+else:
+    REALTIME_API_HOST = 'http://%s:8000' % (os.environ.get('DOCKER_VEHICLES_API_HOSTNAME') or 'localhost')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
