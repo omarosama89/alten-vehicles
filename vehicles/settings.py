@@ -140,7 +140,7 @@ USE_TZ = True
 if 'RDS_DB_NAME' in os.environ:
     REALTIME_API_HOST = 'http://alten-realtime.herokuapp.com'
 else:
-    REALTIME_API_HOST = 'http://%s:3001' % (os.environ.get('DOCKER_VEHICLES_API_HOSTNAME') or 'localhost')
+    REALTIME_API_HOST = 'http://%s:3001' % (os.environ.get('DOCKER_REALTIME_HOSTNAME') or 'localhost')
 
 
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))

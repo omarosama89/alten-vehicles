@@ -28,4 +28,4 @@ class RealtimeApi:
             requests.post(url=REMOTE_URL, data=json.dumps(data), headers=headers)
         except ConnectionError:
             pass
-        pdb.set_trace()
+        # pdb.set_trace()
