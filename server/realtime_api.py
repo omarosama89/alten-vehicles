@@ -23,9 +23,9 @@ class RealtimeApi:
             }
         }
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-        requests.post(url=REMOTE_URL, data=json.dumps(data), headers=headers)
-        # try:
-        #     requests.post(url=REMOTE_URL, data=json.dumps(data), headers=headers)
-        # except ConnectionError:
-        #     pass
-        # pdb.set_trace()
+        # requests.post(url=REMOTE_URL, data=json.dumps(data), headers=headers)
+        try:
+            requests.post(url=REMOTE_URL, data=json.dumps(data), headers=headers)
+        except ConnectionError:
+            pass
+        pdb.set_trace()

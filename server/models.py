@@ -26,6 +26,14 @@ class Vehicle(models.Model):
     def customer_name(self):
         return self.customer.first_name + ' ' + self.customer.last_name
 
+    def toggle_status(self):
+        if self.status == 'connected':
+            self.status = 'disconnected'
+        else:
+            self.status = 'connected'
+        self.save()
+
+
 @receiver(pre_save, sender=Vehicle)
 def callback(sender, instance, **kwargs):
     RealtimeApi.notify('event', instance)
